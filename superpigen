@@ -18,8 +18,8 @@ args = parser.parse_args()
 
 
 def genPi(places, quiet=False, maxK=None):
-    """Generates pi rounded to whatever number of decimal places you want.
-    places excludes the leading three. (genPi(5) returns 3.14159.) If quiet is
+    """Generates pi to places decimal places, not counting the leading three.
+    (genPi(5) returns 3.14159.) If quiet is
     False then it won't show progress reports."""
     getcontext().prec = places + 2
     subsum = 0
@@ -30,7 +30,7 @@ def genPi(places, quiet=False, maxK=None):
         maxK = ceil(0.0704225352 * places + 0.126760563) + 1
 
     # these things are from Matt Parker's video where
-    # he calculates pi by hand
+    # he calculates pi by hand using the Chudnovsky Algorithm
     for k in range(maxK):
         top = factorial(6 * k) * (545140134 * k + 13591409)
         bottom = factorial(3 * k) * factorial(k)**3 * (-262537412640768000)**k
