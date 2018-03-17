@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+import argparse
+import sys
+from decimal import getcontext, Decimal
+from math import factorial, ceil
+
+# create the parser for passing it like a command
+parser = argparse.ArgumentParser(description='Generate pi')
+# everything is optional so it can be double clicked
+parser.add_argument('-d', '--digits', type=int, help='Number of digits (excluding the \
+                    leading 3) to generate')
+parser.add_argument('-t', '--test', type=int, action='append', help='Test maxK values. \
+                    Code must be changed first - see code for details.')
+#                   look at the last if statement to see what you have to do
+args = parser.parse_args()
+
+
+def genPi(places, maxK=None):
+    """Generates pi rounded to whatever number of decimal places you want.
+    places excludes the leading three. (genPi(5) returns 3.14159)"""
+    getcontext().prec = places + 2
+    subsum = 0
+    # maxK is usually not set - it's only set when using test()
+    if not maxK:
+        # this is determined by a equation that was built using test()
+        # plus one for good measure
+        maxK = ceil(0.0704225352 * places + 0.126760563) + 1
+
+    # these things are from Matt Parker's video where
+    # he calculates pi by hand
+    for k in range(maxK):
+        top = factorial(6 * k) * (545140134 * k + 13591409)
+        bottom = factorial(3 * k) * factorial(k)**3 * (-262537412640768000)**k
+        subsum += Decimal(str(top)) / Decimal(str(bottom))
+
+    pie = Decimal('426880') * Decimal('10005').sqrt() / subsum
+    pie = round(pie, places)
+    return pie
+
+
+def test(kvalues, actualPi):
+    """For testing. Prints how many decimal places kvalues are accurate to
+    if kvalues were used for genPi()'s maxK. You must supply your own actualPi,
+    which should be a string."""
+    # exits if actualPi has not been set yet
+    if not actualPi:
+        print('you need to add an actual pi first - see code for details')
+        # look at the last if statement to see what you have to do
+        sys.exit(1)
+
+    for K in kvalues:
+        # generates a pi that is the length of actualPi
+        # and has a maxK of what maxK that is being tested
+        generatedPi = str(genPi(len(actualPi) - 2, K))
+        for c in range(1, len(actualPi) + 1):
+            # when a digit in generatedPi is not equal to the same digit in
+            # actualPi, it will print maxK and where the last accurate place is
+            # then move on to the next test
+            if generatedPi[c] != actualPi[c]:
+                print(str(K) + ': ' + str(c - 2))
+                break
+
+
+if __name__ == '__main__':
+    if args.test:
+        actualPi = ''                # add an actual pi here if you need to test
+        test(args.test, actualPi)
+    else:
+        # if done as a command
+        if args.digits:
+            print(genPi(args.digits))
+            # pause the shell before exiting when not on MacOS (so you can
+            # actually see the result)
+            if sys.platform != 'darwin':
+                input('press enter to exit')
+        # if double clicked
+        else:
+            digits = int(input('Number of digits to generate: '))
+            print(genPi(digits))
