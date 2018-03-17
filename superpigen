@@ -77,11 +77,11 @@ if __name__ == '__main__':
         # if done as a command
         if args.digits:
             print(genPi(args.digits, args.silent))
-            # pause the shell before exiting when not on MacOS (so you can
-            # actually see the result)
-            if sys.platform != 'darwin':
-                input('press enter to exit')
         # if double clicked
         else:
             digits = int(input('Number of digits to generate: '))
             print(genPi(digits))
+            # pause the shell before exiting when not on MacOS (so you can
+            # actually see the result)
+            if sys.platform != 'darwin':
+                input('press enter to exit')
