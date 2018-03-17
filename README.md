@@ -1,5 +1,5 @@
 # pigen
-Generates pi you whatever place you want.
+Generates pi for you whatever place you want.
 
 Uses the equation from the beginning of [this video](https://youtu.be/LhlqCJjbEa0), where mathematician Matt Parker calculates pi by hand for Pi Day 2018. For some reason this equation works better than others variants of the same equation that I tried (probably because the square root bit is outside the summation).
 
