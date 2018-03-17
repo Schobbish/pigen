@@ -70,7 +70,7 @@ def test(kvalues, actualPi):
 
 if __name__ == '__main__':
     if args.test:
-        actualPi = '3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348'                # add an actual pi here if you need to test
+        actualPi = ''                # add an actual pi here if you need to test
         test(args.test, actualPi)
     else:
         # if done as a command
