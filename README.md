@@ -1,16 +1,14 @@
 # pigen
-Generates pi to as many digits as you want. 
+Generates pi to as many digits as you want.
 
-Uses the equation from the beginning of [this video](https://youtu.be/LhlqCJjbEa0), where mathematician Matt Parker calculates pi by hand for Pi Day 2018. For some reason this equation works better than others variants of the same equation that I tried (probably because the square root bit is outside the summation).
+Uses the equation from the beginning of [this video](https://youtu.be/LhlqCJjbEa0), where mathematician Matt Parker calculates pi by hand for Pi Day 2018. The equation used is a variant of the Chudnovsky algorithm. For some reason this variant works better than other variants of the same algorithm that I tried (probably because the square root bit is outside the summation).
 
 ## Installation
 Just download or clone this repository. You will need Python 3.
 
 ## Usage
-This only applies to MacOS and probably other Unix-based systems.
+This only applies to MacOS and probably other Unix-based systems (tested only on Raspbian though).
 
-There are a couple ways to run this. You can double click on it (the easiest way), which will open Terminal (or the equivalent) and prompt you for the number of digits you want. 
+Double-click `pigen` or `superpigen` to run it. Terminal (or your platform's equivalent) will be opened, and you will be prompted for the number of digits to generate. `superpigen` will show progress reports when generating greater than or equal to 10,000 digits, but is probably slower than `pigen`.
 
-You can also run it in your shell by typing in the path to the pigen executable script. Running it this way gives you a couple more options than double clicking does. You can run `$ /path/to/pigen -h` to see then all, or use this table if you need help.
-
-[table]
+`superpigen` has a parser, so it will also accept arguments when run in the command line. `-d digits` or `--digits digits` will skip the prompt and generate `digits` decimal places. Use `-s` or `--silent` after `digits` to skip printing progress reports. `-t kvalue` or `--test kvalue` will test how many digits of pi generated using `kvalue` as the upper bound of the summation used in the algorithm is. You will need to hard code a true pi in the script (put it in the empty string in or near line 74).
