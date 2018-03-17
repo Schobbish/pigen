@@ -36,8 +36,9 @@ def genPi(places, quiet=False, maxK=None):
         bottom = factorial(3 * k) * factorial(k)**3 * (-262537412640768000)**k
         subsum += Decimal(str(top)) / Decimal(str(bottom))
 
-        # show progress (but not every time and not when quiet)
-        if (not quiet) and (k % 50 == 0):
+        # show progress for longer calculations
+        # (but not every time and not when quiet)
+        if (not quiet) and (places >= 10000) and (k % 50 == 0):
             print('%(k)s/%(maxK)s' % {'k': k, 'maxK': maxK})
 
     pie = Decimal('426880') * Decimal('10005').sqrt() / subsum
