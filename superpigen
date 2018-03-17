@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(description='Generate pi')
 parser.add_argument('-d', '--digits', type=int, help='Number of digits \
                     (excluding the leading 3) to generate')
 parser.add_argument('-s', '--silent', action='store_true', help="Don't show \
-                    progress reports")
+                    progress reports (-d is required for this to work)")
 parser.add_argument('-t', '--test', type=int, action='append', help='Test maxK \
                     values. Code must be changed first - see code for details.')
 #                   look at the last if statement to see what you have to do
