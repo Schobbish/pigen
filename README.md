@@ -3,6 +3,8 @@ Generates pi to as many digits as you want.
 
 Uses the equation from the beginning of [this video](https://youtu.be/LhlqCJjbEa0), where mathematician Matt Parker calculates pi by hand for Pi Day 2018. The equation used is a variant of the Chudnovsky algorithm. For some reason this variant works better than other variants of the same algorithm that I tried (probably because the square root bit is outside the summation).
 
+NOTE: digits or places always excludes the leading 3. The result is rounded.
+
 ## Installation
 Just download or clone this repository. You will need Python 3.
 
