@@ -5,14 +5,11 @@ import sys
 from decimal import getcontext, Decimal
 from math import factorial, ceil
 
-# a true pi should go here if you need to run test()
-actualPi = ''
-
 
 def genPi(places, quiet=False, maxK=None):
     """Generates pi to places decimal places, not counting the leading three.
-    (genPi(5) returns 3.14159.) If quiet is
-    False then it won't show progress reports."""
+    (genPi(5) returns 3.14159.)
+    If quiet is False then it won't show progress reports."""
     getcontext().prec = places + 2
     subsum = 0
     # maxK is usually not set - it's only set when using test()
@@ -38,15 +35,11 @@ def genPi(places, quiet=False, maxK=None):
     return pie
 
 
-def test(kvalues, actualPi):
+def test(kvalues):
     """For testing. Prints how many decimal places kvalues are accurate to
     if kvalues were used for genPi()'s maxK. You must supply your own actualPi,
     which should be a string."""
-    # exits if actualPi has not been set yet
-    if not actualPi:
-        print('you need to add an actual pi first - see code for details')
-        # look at line 8 to see what you have to do
-        sys.exit(1)
+    actualPi = open('actualPi.txt').read()
 
     for K in kvalues:
         # generates a pi that is the length of actualPi
@@ -67,19 +60,19 @@ def main():
     number of digits to generate, and a pi will be generated with that many
     decimal places."""
     # create the parser for passing it like a command
-    parser = argparse.ArgumentParser(description='Generate pi')
+    parser = argparse.ArgumentParser(description='Generates pi to as many \
+                                     digits as you want.')
     # everything is optional so it can be double clicked
     parser.add_argument('-d', '--digits', type=int, help='Number of digits \
                         (excluding the leading 3) to generate')
     parser.add_argument('-s', '--silent', action='store_true', help="Don't show \
                         progress reports (-d is required for this to work)")
-    parser.add_argument('-t', '--test', type=int, action='append', help='Test maxK \
-                        values. Code must be changed first - see code for details.')
-    #                   look at line 8 to see what you have to do
+    parser.add_argument('-t', '--test', type=int, action='append', help='Test \
+                        the accuracy of maxK values.')
     args = parser.parse_args()
 
     if args.test:
-        test(args.test, actualPi)
+        test(args.test)
     else:
         # if done as a command
         if args.digits:
