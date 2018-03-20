@@ -11,6 +11,6 @@ Just download or clone this repository. You will need Python 3.
 ## Usage
 This only applies to MacOS and probably other Unix-based systems (tested only on Raspbian though).
 
-Double-click `pigen` or `superpigen` to run it. Terminal (or your platform's equivalent) will be opened, and you will be prompted for the number of digits to generate. `superpigen` will show progress reports when generating greater than or equal to 10,000 digits (`pigen will not`), but is probably slower than `pigen`.
+Double-click `pigen` or `superpigen` to run it. Terminal (or your platform's equivalent) will be opened, and you will be prompted for the number of digits to generate. `superpigen` will show progress reports when generating greater than or equal to 10,000 digits (`pigen` will not), but is probably slower than `pigen`.
 
 `superpigen` has a parser, so it will also accept arguments when run in the command line. `-d digits` or `--digits digits` will skip the prompt and generate `digits` decimal places. `-s` or `--silent` will skip printing progress reports. `-t kvalue` or `--test kvalue` will test how many digits of pi generated using `kvalue` as the upper bound of the summation used in the algorithm. The generated pi is checked against the pi in `actualPi.txt`.
