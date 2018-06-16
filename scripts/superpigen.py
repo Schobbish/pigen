@@ -50,11 +50,12 @@ def test(kvalues):
             # then move on to the next test
             if generatedPi[c] != actualPi[c]:
                 getcontext().prec = 10
-                out = '%3s; %4s'
+                out = '%3s: %4s'
+                print(out % (str(K), str(c - 2)))
+                # a different output format i want to keep:
                 # out = 'k: %3s; places: %4s; diff: % 9.1e; %%error: (% 9.1e)%%'
                 # diff = Decimal(actualPi) - Decimal(generatedPi)
                 # error = diff / Decimal(actualPi) * 100
-                print(out % (str(K), str(c - 2)))
                 # print(out % (str(K), str(c - 2), diff, error))
                 break
 
