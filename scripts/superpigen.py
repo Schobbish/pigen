@@ -15,8 +15,7 @@ def genPi(places, quiet=False, maxK=None):
     # maxK is usually not set - it's only set when using test()
     if not maxK:
         # this is determined by a equation that was built using test()
-        # plus one for good measure
-        maxK = ceil(0.0704225352 * places + 0.126760563) + 1
+        maxK = ceil((-14.185 + (201.204625 - 0.002 * places)**0.5) / -0.001)
 
     # these things are from Matt Parker's video where
     # he calculates pi by hand using the Chudnovsky Algorithm
@@ -50,7 +49,13 @@ def test(kvalues):
             # actualPi, it will print maxK and where the last accurate place is
             # then move on to the next test
             if generatedPi[c] != actualPi[c]:
-                print(str(K) + ': ' + str(c - 2))
+                getcontext().prec = 10
+                out = '%3s; %4s'
+                # out = 'k: %3s; places: %4s; diff: % 9.1e; %%error: (% 9.1e)%%'
+                # diff = Decimal(actualPi) - Decimal(generatedPi)
+                # error = diff / Decimal(actualPi) * 100
+                print(out % (str(K), str(c - 2)))
+                # print(out % (str(K), str(c - 2), diff, error))
                 break
 
 
