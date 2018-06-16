@@ -15,7 +15,7 @@ def genPi(places, quiet=False, maxK=None):
     # maxK is usually not set - it's only set when using test()
     if not maxK:
         # this is determined by a equation that was built using test()
-        maxK = ceil((-14.185 + (201.204625 - 0.002 * places)**0.5) / -0.001)
+        maxK = ceil(0.0714285714 * places + 0.0714285714)
 
     # these things are from Matt Parker's video where
     # he calculates pi by hand using the Chudnovsky Algorithm

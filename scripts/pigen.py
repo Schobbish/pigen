@@ -11,8 +11,7 @@ def genPi(places):
     getcontext().prec = places + 2
     subsum = 0
     # this is determined by a equation that was built using test()
-    # plus one for good measure
-    maxK = ceil(0.0704225352 * places + 0.126760563) + 1
+    maxK = ceil(0.0714285714 * places + 0.0714285714)
 
     # these things are from Matt Parker's video where
     # he calculates pi by hand using the Chudnovsky Algorithm
